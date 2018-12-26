@@ -1,0 +1,5 @@
+#node app -l <absolute or relative path to file> -s <s3://bucket/key>
+
+#NOTE the following is dummy data and wont work
+node app -l /Users/brandoncookedev/helloworld.txt -s s3://testbucket/helloworld.txt
+node app -l ../Documents/helloworld.txt -s s3://testbucket/helloworld.txt
