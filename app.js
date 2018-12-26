@@ -10,6 +10,8 @@ let AWS = require('aws-sdk');
 let S3 = new AWS.S3({apiVersion: '2006-03-01'});
 let s3UrlRegex = new RegExp(/^s3:\/\/([\S]*)\/([\S]*)$/i);
 
+const USAGE = 'USAGE node app -l <absolute or relative path to file> -s <s3 url: [s3://bucket/key]>';
+
 let program = require('commander');
 program.version('1.0')
 	.option('-l, --local <file>', 'Local file to diff')
@@ -18,11 +20,6 @@ program.version('1.0')
 
 let localFile = program.local;
 let s3FileUrl = program.s3Url;
-
-if(!localFile || !s3FileUrl){
-	throw new Error('Must have both local and s3 file options');
-	process.exit(1);
-}
 
 function validateS3Url(url){
 	return s3UrlRegex.test(url);
@@ -38,7 +35,7 @@ function parseS3Url(url){
 }
 
 async function getS3File(url){
-	if(validateS3Url){
+	if(validateS3Url(url)){
 		return await S3.getObject(parseS3Url(url)).promise();
 	}
 	else throw new Error('S3 url is not valid. Must be "s3://Bucket/Key"');
@@ -74,7 +71,7 @@ function printDiff(differences){
 	    part.removed ? 'red' : 'grey';
 	  process.stderr.write(part.value[color]);
 	});
-	
+
 	if(differences.length == 1 && 
 		!differences[0].hasOwnProperty('removed') && 
 		!differences.hasOwnProperty('added'))
@@ -83,6 +80,11 @@ function printDiff(differences){
 
 (async function(){
 	try{
+		if(!localFile || !s3FileUrl){
+			throw new Error(USAGE + '\nMust have both local and s3 file options');
+			process.exit(1);
+		}
+
 		let object = await getS3File(s3FileUrl);
 		console.log('Got S3 Object: %s', object);
 		
@@ -97,7 +99,7 @@ function printDiff(differences){
 		return true;
 	}
 	catch(e){
-		console.error(e);
+		console.error(e.message.red);
 		process.exit(1);
 	}
 })()
