@@ -86,13 +86,10 @@ function printDiff(differences){
 		}
 
 		let object = await getS3File(s3FileUrl);
-		console.log('Got S3 Object: %s', object);
-		
 		let s3Content = object.Body.toString('utf8');
 		let localContent = getLocalFile(localFile);
 		let differences = diff.diffLines(s3Content, localContent);
 
-		console.log(differences);
 		printDiff(differences);
 
 		temp.cleanupSync();
