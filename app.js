@@ -74,7 +74,7 @@ function printDiff(differences){
 
 	if(differences.length == 1 && 
 		!differences[0].hasOwnProperty('removed') && 
-		!differences.hasOwnProperty('added'))
+		!differences[0].hasOwnProperty('added'))
 		console.log('Files match!'.green);
 }
 
