@@ -14,7 +14,7 @@ node app \
 ```
 Both command options are required.
 
-#### Examples (NOTE these won't work, it's only for show)
+#### Examples (NOTE these won't work if you simply throw them into cli, it's only for show)
 
 ```bash
 # absolute path
