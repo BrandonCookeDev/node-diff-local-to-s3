@@ -14,7 +14,26 @@ node app \
 ```
 Both command options are required.
 
-#### Examples (NOTE these won't work if you simply throw them into cli, it's only for show)
+#### Working Examples
+
+```bash
+# run from root of project
+echo 'compare same file content' 
+node app -l ./example/example.compare.txt -s s3://brandon-cooke-dev-resources/example.match.txt
+```
+
+**results**
+![Matching Results](./example/MatchResults.png)
+
+```bash
+echo 'compare non-matching content'
+node app -l ./example/example.compare.txt -s s3://brandon-cooke-dev-resources/example.mismatch.txt
+```
+
+**results**
+![Mismatching Results](./example/MismatchResults.png)
+
+#### Mock Examples (NOTE these won't work if you simply throw them into cli, it's only for show)
 
 ```bash
 # absolute path
