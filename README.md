@@ -5,7 +5,7 @@ Node app that takes a local filepath and s3 url and dynamically diffs the conten
 
 ## Examples
 
-#### Syntax
+### Syntax
 
 ```
 node app \ 
@@ -14,7 +14,7 @@ node app \
 ```
 Both command options are required.
 
-#### Working Examples
+### Working Examples
 
 ```bash
 # run from root of project
@@ -35,7 +35,7 @@ node app -l ./example/example.compare.txt -s s3://brandon-cooke-dev-resources/ex
 
 <img src="./example/MismatchResults.png" width=350 />
 
-#### Mock Examples (NOTE these won't work if you simply throw them into cli, it's only for show)
+### Mock Examples (NOTE these won't work if you simply throw them into cli, it's only for show)
 
 ```bash
 # absolute path
