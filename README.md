@@ -24,7 +24,7 @@ node app -l ./example/example.compare.txt -s s3://brandon-cooke-dev-resources/ex
 
 **results**
 
-<img src="./example/MatchResults.png" width=250 />
+<img src="./example/MatchResults.png" width=350 />
 
 ```bash
 echo 'compare non-matching content'
@@ -33,7 +33,7 @@ node app -l ./example/example.compare.txt -s s3://brandon-cooke-dev-resources/ex
 
 **results**
 
-<img src="./example/MismatchResults.png" width=250 />
+<img src="./example/MismatchResults.png" width=350 />
 
 #### Mock Examples (NOTE these won't work if you simply throw them into cli, it's only for show)
 
